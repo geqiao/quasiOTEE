@@ -6,6 +6,7 @@ Created on Mon Mar 13 21:02:40 2017
 """
 
 import numpy as np
+from numpy import matlib as matlib
 import pandas as pd
 import scipy.spatial.distance as sdis
 import itertools as itools
@@ -37,7 +38,7 @@ def quasiOT_sample():
     r = int(input("Number of sampled random trajectories ?\n"))
     M = int(input("Number of generated random trajectories ?\n"))
     # p= 4
-    # r= 50
+    # r= 100
     # M= 200
     datafile = easygui.fileopenbox(msg="Choose the input file (*.csv)", title="Open File", default="*.csv")
 
@@ -114,8 +115,8 @@ def quasiOT_sample():
     TrajectorySet = [T[i] for i in best_comb - 1]
     ParameterSet = TrajectorySet[:]
 
-    datamatrix_diff_transver = np.matlib.repmat(datamatrix_diff, k + 1, 1)
-    datamatrix_transver = np.matlib.repmat(np.transpose(datamatrix[:, 0]), k + 1, 1)
+    datamatrix_diff_transver = matlib.repmat(datamatrix_diff, k + 1, 1)
+    datamatrix_transver = matlib.repmat(np.transpose(datamatrix[:, 0]), k + 1, 1)
 
     for i in range(r):
         trajectory = TrajectorySet[i]
